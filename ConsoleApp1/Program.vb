@@ -38,7 +38,7 @@ Module Program
             '1つ目の条件がfalseならそれ以降は処理を飛ばす
         End If
 
-        If (aaa = aaa) AndAlso (aaa = aaa) Then
+        If (aaa = aaa) OrElse (aaa = aaa) Then
             'Orelseはorの性質に加え
             'OrElseは1つ目の条件がtrueならそれ以降は処理を飛ばす
         End If
@@ -48,6 +48,7 @@ Module Program
         Select Case aaa
             Case 90 To 100
                 Console.WriteLine("秀")
+                Exit Select 'Exit Selectを使うと抜け出す
             Case 80 To 89
                 Console.WriteLine("優")
             Case 70 To 79
@@ -55,6 +56,22 @@ Module Program
             Case Else
                 Console.WriteLine("可")
         End Select
+
+        '三項演算子
+        Dim aaa As String = If(10 = 10, "正解", "間違い") 'aaaには正解が返ってくる
+
+        'リスト型
+        Dim aaa As New List(Of String)
+        aaa.Add("hoge") '追加
+        aaa.Add("foo")
+        aaa.Add("hogehoge")
+        aaa.Remove("hoge") '削除
+        aaa.Clear() 'データの全削除。空の要素は残る（個数はそのまま)
+        aaa = Nothing '要素も削除。完全初期化
+        aaa.Count() 'データの個数
+        Console.WriteLine(aaa(0))
+
+
 
     End Sub
 
