@@ -137,9 +137,16 @@ Module Program
     End Sub
     xxx(100,,ccc:="hogehoge")　'100 hoge hogehoge と出力
 
+    '参照渡し　元の値に影響を及ぼす
+    Dim aaa As Integer = 100
+    Private Sub xxx(ByRef aaa As Integer)
+        aaa = 200
+    End Sub
+    xxx(aaa) '関数を実行するともとのaaaの値が200に変更されている
+    Console.WriteLine(aaa)
 
 
-    'functionプロシージャ
+    'functionプロシージャ　返り値がある関数。型の指定をする
     Private Function xxx() As String
         Return "hoge"
     End Function
