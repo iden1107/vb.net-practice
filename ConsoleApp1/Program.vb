@@ -17,8 +17,35 @@ Module Program
         '定数
         Const aaa As String = "hogehoge"
 
+        '文字列の結合
+        Dim aaa, bbb As String
+        aaa = "hello"
+        bbb = "world"
+        MsgBox(aaa & bbb) '+でもokだが&推奨
+        MsgBox($"{aaa}!!!{bbb}!!!!")
+
+        '数値の扱い
+        Dim x As Decimal = 815.6D '後ろのDはデジマルであることを明示する。型を明確にするほうがよい
+
+        '小数点
+        Dim aaa As Decimal = 123.4D
+        Dim bbb As String = aaa.ToString("0.00")
+        Console.WriteLine(bbb) '123.40　と0が補完される
+        '特殊文字
+        Console.WriteLine(" ""hello ") '  "は""とする。　"hello と出力。
+        Console.WriteLine("改行" & vbCrLf) '改行
+
+
+        '日付
+        Dim day As Date = #6/27/2020#
+        MsgBox(day) '書式指定なし。Windowsの設定で書式化。
+        MsgBox(day.ToString("yyyy年MM月dd日")) '2020年06月27日
+        MsgBox(day.ToString("yy-MM-dd")) '20-06-27
+        day = Now '現在日付時刻
+        MsgBox(Now.ToString("HH:mm:ss")) '時刻
+
         '演算子
-        Dim aaa As Integer = 10
+        Dim aaa As Integer = 10b
         aaa = aaa Mod 3　'余り
 
         '比較演算子
@@ -81,6 +108,27 @@ Module Program
 
         For i As Integer = 1 To 5 'これでもOk
             aaa.Add("hoge")
+        Next
+
+        'for分　step  +1以外の値を設定。-も可能
+        For i = 1 To 10 Step 2
+            Console.Write(i)  '1 3 5 7 9が出力される
+        Next i
+
+        'ループを抜ける(Exit For)
+        For i = 0 To 10
+            If i = 3 Then
+                Exit For
+            End If
+            Console.Write(i) ' 0 1 2まで出力される
+        Next
+
+        '条件でスキップ Continue Fo
+        For i = 0 To 10
+            If i = 5 Then
+                Continue For
+            End If
+            Console.Write(i) '5以外が出力される
         Next
 
         'for each文 リストをループさせる
