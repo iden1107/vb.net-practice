@@ -71,10 +71,77 @@ Module Program
         aaa.Count() 'データの個数
         Console.WriteLine(aaa(0))
 
+        'for文
+        Dim aaa As Integer
+        For i = 1 To 5
+            aaa.Add("hoge") '例)リストに追加
+            'i += 1 などのコードがなくても自動で+1される
+            '逆に　i += 1 を書くと実際は+2で繰り返される 
+        Next
 
+        For i As Integer = 1 To 5 'これでもOk
+            aaa.Add("hoge")
+        Next
+
+        'for each文 リストをループさせる
+        For Each aa As String In aaa
+            Console.WriteLine(aa)
+        Next
+
+        'do until　 条件一致まで処理
+        Dim aaa As Integer = 0
+        Do Until aaa = 5 '最初に終了条件を明示
+            Console.WriteLine(aaa)
+            aaa += 1
+        Loop
+
+        Do
+            Console.WriteLine(aaa)
+            aaa += 1
+        Loop Until aaa = 5 '最後に終了条件を明示
+
+        'do while 条件一致のみ処理
+        Dim aaa As Integer = 0
+        Do While aaa = 5
+            Console.WriteLine(aaa)
+        Loop
+
+        Do
+            Console.WriteLine(aaa)
+        Loop While aaa = 5
 
     End Sub
 
+    '引数
+    Private Sub xxx(ByVal aaa As Integer, ByVal bbb As String) 'byvalは省略可
+        Console.WriteLine(aaa)
+        Console.WriteLine(bbb)
+    End Sub
 
+    'オプション引数 初期値を設定する。
+    Private Sub xxx(aaa As Integer,
+                    Optional bbb As String = "hoge")
+        Console.WriteLine(aaa)
+        Console.WriteLine(bbb)
+    End Sub
+    xxx(100) '100 hoge と出力
+    xxx(100,"foo")　'100 foo と出力
+
+    'オプション引数 複数の場合 引数に := で値を設定
+    Private Sub xxx(aaa As Integer,
+                    Optional bbb As String = "hoge",
+                    Optional ccc As String = "foo")
+        Console.WriteLine(aaa)
+        Console.WriteLine(bbb)
+        Console.WriteLine(ccc)
+    End Sub
+    xxx(100,,ccc:="hogehoge")　'100 hoge hogehoge と出力
+
+
+
+    'functionプロシージャ
+    Private Function xxx() As String
+        Return "hoge"
+    End Function
 
 End Module
