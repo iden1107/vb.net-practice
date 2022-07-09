@@ -2,14 +2,18 @@ Imports System
 
 Module Program
 
-    'グローバル変数　publicは他のファイルからも参照できる。privateはclass内で参照できる
-    Public aaa As String = "hoge"
-    Private aaa As Integer = 100
+    Sub Main()
+        'グローバル変数　publicは他のファイルからも参照できる。privateはclass内で参照できる
+        Public aaa As String = "hoge"
+        Private aaa As Integer = 100
 
-    'グローバル定数
-    Public Const aaa As String = "hoge"
+        'グローバル定数
+        Public Const aaa As String = "hoge"
+    End Sub
+
 
     Sub Main()
+
 
         '変数
         Dim aaa As String = "hello world"
@@ -35,7 +39,6 @@ Module Program
         Console.WriteLine(" ""hello ") '  "は""とする。　"hello と出力。
         Console.WriteLine("改行" & vbCrLf) '改行
 
-
         '日付
         Dim day As Date = #6/27/2020#
         MsgBox(day) '書式指定なし。Windowsの設定で書式化。
@@ -45,7 +48,7 @@ Module Program
         MsgBox(Now.ToString("HH:mm:ss")) '時刻
 
         '演算子
-        Dim aaa As Integer = 10b
+        Dim aaa As Integer = 10
         aaa = aaa Mod 3　'余り
 
         '比較演算子
@@ -58,6 +61,36 @@ Module Program
 
         'インクリメント
         aaa += 1
+
+        '配列
+        Dim aaa(3) As String
+        aaa(0) = "hoge"
+
+        '配列変数を後から変更
+        ReDim aaa(5)
+
+        '配列　宣言と初期化
+        Dim aaa() As String = {"hoge", "foo"} '()に数値は不要になる
+        Dim aaa() = {"hoge", "foo"} '型推論　型が明らかな場合は型指定を省力できる
+
+        '配列の要素数を取得
+        aaa.Length
+
+        '配列のソート
+        Array.Sort(aaa)
+        Array.Reverse(aaa)
+
+        '検索
+        Dim aaa() As String = {"hoge", "foo"}
+        Array.IndexOf(aaa, "hoge") 'この場合１番目の要素のなので　0 が出力される
+
+
+        '二次元配列
+        Dim aaa(2, 3) As String
+        aaa(0, 0) = "aaa"
+        aaa(0, 1) = "bbb"
+        aaa(0, 2) = "ccc"
+        aaa(0, 3) = "ddd"
 
         '論理演算子
         If (aaa = aaa) AndAlso (aaa = aaa) Then
